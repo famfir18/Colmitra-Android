@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Colmitra</string>
+    <string name="app_onboarding_text">Selamat Datang di Collection</string>
+    <string name="app_welcome_text">Selamat Datang di Layanan Collection</string>
+
+    <string name="all_cancel">Batal</string>
+    <string name="all_note">Catatan</string>
+    <string name="all_handphone">Handphone</string>
+    <string name="all_home">Home</string>
+    <string name="all_home_address">Alamat Rumah</string>
+    <string name="all_office_address">Alamat Kantor</string>
+    <string name="all_upload_photo">Upload Foto</string>
+    <string name="all_update">Update</string>
+    <string name="all_sign_in">Sign In</string>
+    <string name="all_log_out">Log Out</string>
+    <string name="all_log_out_confirmation">Anda yakin ingin log out dari aplikasi?</string>
+    <string name="all_refresh">Perbarui</string>
+    <string name="all_next">Next</string>
+
+    <string name="error_data_empty">Data tidak tersedia</string>
+    <string name="error_occurred">An error occurred, please try again</string>
+    <string name="error_form_not_complete">Mohon lengkapi data dengan benar</string>
+    <string name="error_loading_failed">Terjadi kesalahan, mohon ulangi lagi</string>
+    <string name="error_must_not_empty">Wajib diisi</string>
+    <string name="error_network_unavailable">Connectivity failed, please check your network and try again</string>
+    <string name="error_send_data_failed">Sending data failed, try again</string>
+    <string name="error_unauthorized">Unauthorized, logging out..</string>
+
+    <string name="message_gps_rationale">Your GPS is not active, turn it on?</string>
+    <string name="message_location_rationale">We need your location to get the necessary results</string>
+
+    <string name="user_password">Password</string>
+    <string name="username">Username</string>
+
+    <string name="borrower_detail">Detail Borrower</string>
+    <string name="borrower_list">Daftar Borrower</string>
+
+    <string name="customer_amcoll">Amcoll</string>
+    <string name="customer_id">Id Borrower</string>
+    <string name="customer_name">Nama Borrower</string>
+    <string name="customer_bill">Jumlah Tunggakan</string>
+    <string name="customer_cp_phone">Handphone CP</string>
+    <string name="customer_office_phone">Telepon Kantor</string>
+    <string name="customer_payment_status">Status Pembayaran</string>
+    <string name="customer_payment_status_error">Silakan pilih status pembayaran</string>
+    <string name="customer_ptp_date">Tanggal PTP</string>
+    <string name="customer_visit">Status Kunjungan</string>
+    <string name="customer_visit_error">Silakan pilih status kunjungan</string>
+    <string name="customers_empty">Tidak ada data nasabah</string>
+    <string name="error_photo_upload_mandatory">Silakan upload foto terlebih dahulu</string>
+</resources>

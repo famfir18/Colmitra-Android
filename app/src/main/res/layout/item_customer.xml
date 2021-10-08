@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/layout_small_margin"
+    android:background="@drawable/bg_stroke_rounded"
+    android:paddingStart="@dimen/layout_small_margin"
+    android:paddingTop="@dimen/layout_small_margin"
+    android:paddingEnd="0dp"
+    android:paddingBottom="@dimen/layout_small_margin">
+
+    <TextView
+        android:id="@+id/tvNumberHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:minWidth="24dp"
+        android:textColor="@color/text_primary"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/separator1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="00" />
+
+    <View
+        android:id="@+id/separator1"
+        style="@style/VerticalLine"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/layout_small_margin"
+        android:layout_marginEnd="@dimen/layout_small_margin"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvCustomerUserId"
+        app:layout_constraintStart_toEndOf="@id/tvNumberHeader"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCustomerUserId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/text_primary"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/separator2"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toEndOf="@id/separator1"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Customer Id" />
+
+    <View
+        android:id="@+id/separator2"
+        style="@style/VerticalLine"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/layout_small_margin"
+        android:layout_marginEnd="@dimen/layout_small_margin"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvCustomerName"
+        app:layout_constraintStart_toEndOf="@id/tvCustomerUserId"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCustomerName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/text_primary"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/separator3"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintStart_toEndOf="@id/separator2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Customer Name" />
+
+    <View
+        android:id="@+id/separator3"
+        style="@style/VerticalLine"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/layout_small_margin"
+        android:layout_marginEnd="@dimen/layout_small_margin"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvCustomerPhone"
+        app:layout_constraintStart_toEndOf="@id/tvCustomerName"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCustomerPhone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/layout_small_margin"
+        android:gravity="center"
+        android:textColor="@color/text_primary"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1.6"
+        app:layout_constraintStart_toEndOf="@id/separator3"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Phone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="layout_extra_large_margin">44dp</dimen>
+    <dimen name="layout_large_margin">24dp</dimen>
+    <dimen name="layout_general_margin">16dp</dimen>
+    <dimen name="layout_small_margin">8dp</dimen>
+
+    <dimen name="corner_radius">12dp</dimen>
+</resources>
