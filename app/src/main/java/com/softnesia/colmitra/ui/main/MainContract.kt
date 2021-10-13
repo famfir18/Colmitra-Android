@@ -12,6 +12,7 @@ class MainContract {
     }
 
     interface MainAction {
-        fun loadCollector(page: Int)
+        fun loadCollector(/*page: Int*/)
+        fun searchCollector(search: String)
     }
 }

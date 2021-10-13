@@ -14,6 +14,12 @@ class CustomerViewHolder(val view: View, private val mListener: ItemClickListene
         view.tvCustomerUserId.text = data.userId
         view.tvCustomerName.text = data.name
         view.tvCustomerPhone.text = data.phone
+        if (data.company == null) {
+            view.tvCompany.text = "-"
+        } else {
+            view.tvCompany.text = data.company
+        }
+        view.tvMitra.text = data.mitra
 
         itemView.setOnClickListener { view: View? ->
             mListener?.onItemClicked(view!!, data, adapterPosition)

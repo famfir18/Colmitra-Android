@@ -48,4 +48,10 @@
     <string name="customer_visit_error">Silakan pilih status kunjungan</string>
     <string name="customers_empty">Tidak ada data nasabah</string>
     <string name="error_photo_upload_mandatory">Silakan upload foto terlebih dahulu</string>
+    <string name="mitra">Mitra</string>
+    <string name="dpd">DPD</string>
+
+    <string name="latitudeBabel">Latitude</string>
+    <string name="longitudeBabel">Longitude</string>
+
 </resources>

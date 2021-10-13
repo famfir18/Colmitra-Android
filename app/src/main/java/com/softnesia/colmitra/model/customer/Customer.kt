@@ -33,5 +33,17 @@ data class Customer(
     @SerializedName("STATUS_KUNJUNGAN")
     val visitStatus: Long? = null,
     @SerializedName("STATUS_PEMBAYARAN")
-    val paymentStatus: Long? = null
+    val paymentStatus: Long? = null,
+    @SerializedName("MITRA")
+    val mitra: String? = null,
+    @SerializedName("COMPANY")
+    val company: String? = null,
+    @SerializedName("DPD")
+    val dpd: Number?,
+    @SerializedName("VA_BCA")
+    val vabca: Number?,
+    @SerializedName("VA_MANDIRI")
+    val vaMandiri: Number?,
+    @SerializedName("VA_PERMATA")
+    val vaPermata: Number?
 ) : Parcelable

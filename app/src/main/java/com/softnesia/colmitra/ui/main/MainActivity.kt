@@ -8,10 +8,16 @@ import android.content.res.Configuration
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContextCompat
+import androidx.core.view.contains
+import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -45,6 +51,8 @@ import com.softnesia.colmitra.util.network.Connectivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.material_drawer_header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
+import java.util.*
+import java.util.Locale.filter
 
 class MainActivity : ListBaseActivity(), MainContract.MainView, ItemClickListener {
     private lateinit var presenter: MainPresenter
@@ -171,11 +179,11 @@ class MainActivity : ListBaseActivity(), MainContract.MainView, ItemClickListene
             return
         }
 
-        presenter.loadCollector(pageToLoad)
+        presenter.loadCollector(/*pageToLoad*/)
     }
 
     override fun endlessLoaderEnabled(): Boolean {
-        return true
+        return false
     }
 
     override val layoutManager: RecyclerView.LayoutManager?
@@ -191,19 +199,42 @@ class MainActivity : ListBaseActivity(), MainContract.MainView, ItemClickListene
             return
         }
 
-        if (adapter == null) {
+//        if (adapter == null) {
             itemList = data.customers.toMutableList()
             adapter = CustomerAdapter(itemList, this).apply {
                 setHasStableIds(true)
             }
             rvList.adapter = adapter
-            return
-        }
+//            return
+//        }
 
-        itemList.addAll(data.customers)
-        adapter!!.notifyDataSetChanged()
+//        itemList.addAll(data.customers)
+//        adapter!!.notifyDataSetChanged()
 
         emptyViewHolder?.hide()
+
+        search_view.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String): Boolean {
+                search_view.clearFocus()
+                Log.i("Tag", "lalala")
+                itemList = data.customers.toMutableList()
+                presenter.searchCollector(query)
+//                itemList.clear()
+                rvList.adapter = adapter
+                itemList.addAll(data.customers)
+
+                return true
+            }
+
+            override fun onQueryTextChange(query: String): Boolean {
+                if (query == "") {
+                    loadData()
+                }
+                return true
+            }
+
+        })
+
     }
 
     override fun onItemClicked(v: View, data: Any?, position: Int) {

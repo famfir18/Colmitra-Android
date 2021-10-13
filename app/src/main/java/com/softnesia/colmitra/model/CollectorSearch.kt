@@ -1,16 +1,13 @@
 package com.softnesia.colmitra.model
 
-import com.softnesia.colmitra.service.api.ApiService.client
+import com.softnesia.colmitra.service.api.ApiService
 import com.softnesia.colmitra.service.api.DefaultCallback
 import com.softnesia.colmitra.util.network.ResponseCallback
 import retrofit2.Call
 
-/**
- * Created by Dark on 21/01/2018.
- */
-object CollectorRepository {
-    fun detail(callback: ResponseCallback<Collector>): Call<*> {
-        val call = client.getCollector()
+object CollectorSearch {
+    fun detail(search: String, callback: ResponseCallback<Collector>): Call<*> {
+        val call = ApiService.client.getCollectorSearch(search)
 
         call.enqueue(object : DefaultCallback<Collector>() {
             override fun onSuccess(response: Collector?, code: Int) {

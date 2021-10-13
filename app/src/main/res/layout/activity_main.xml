@@ -50,6 +50,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ivLogo" />
 
+        <SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:queryHint="Cari Data..."
+            android:iconifiedByDefault="false"
+            app:layout_constraintTop_toBottomOf="@id/tvBorrowerHeader"
+            android:background="@drawable/bg_stroke_rounded"
+            android:focusable="false"
+            android:layout_margin="20dp"
+            app:layout_constraintStart_toStartOf="parent"/>
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -61,88 +73,106 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvBorrowerHeader">
+            app:layout_constraintTop_toBottomOf="@id/search_view">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="@dimen/layout_general_margin">
+                android:padding="20dp">
 
-                <TextView
-                    android:id="@+id/tvNumberHeader"
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:minWidth="24dp"
-                    android:text="No"
-                    android:textColor="@color/text_primary"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvCustomerUserId"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="Id"
-                    android:textColor="@color/text_primary"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@id/tvNameHeader"
-                    app:layout_constraintHorizontal_weight="2"
-                    app:layout_constraintStart_toEndOf="@id/tvNumberHeader"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tvNameHeader"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="Nama"
-                    android:textColor="@color/text_primary"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@id/tvPhoneHeader"
-                    app:layout_constraintHorizontal_weight="2"
-                    app:layout_constraintStart_toEndOf="@id/tvCustomerUserId"
-                    app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/tvNumberHeader"
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:minWidth="24dp"
+                            android:text="No"
+                            android:textColor="@color/text_primary"
+                            android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tvPhoneHeader"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="Handphone"
-                    android:textColor="@color/text_primary"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_weight="1"
-                    app:layout_constraintStart_toEndOf="@id/tvNameHeader"
-                    app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+                            android:id="@+id/tvMitra"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:text="Mitra"
+                            android:textColor="@color/text_primary"
+                            android:textStyle="bold" />
 
-                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                    android:id="@+id/srlRefresh"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_marginTop="@dimen/layout_general_margin"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvNumberHeader">
+                        <TextView
+                            android:id="@+id/tvCompany"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:text="Company"
+                            android:textColor="@color/text_primary"
+                            android:textStyle="bold" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvCustomers"
+                        <TextView
+                            android:id="@+id/tvCustomerUserId"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:text="Id"
+                            android:textColor="@color/text_primary"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvNameHeader"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:text="Nama"
+                            android:textColor="@color/text_primary"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvPhoneHeader"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:text="Handphone"
+                            android:textColor="@color/text_primary"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                        android:id="@+id/srlRefresh"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:overScrollMode="never"
-                        tools:listitem="@layout/item_customer" />
+                        android:layout_marginTop="@dimen/layout_general_margin">
 
-                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvCustomers"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:overScrollMode="never"
+                            tools:listitem="@layout/item_customer" />
 
-                <include
-                    android:id="@+id/vEmpty"
-                    layout="@layout/layout_empty"
-                    android:visibility="gone" />
+                    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/layout_general_margin">
+
+                        <include
+                            android:id="@+id/vEmpty"
+                            layout="@layout/layout_empty"
+                            android:visibility="gone" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
 
         </androidx.cardview.widget.CardView>
 
@@ -151,7 +181,7 @@
     <com.mikepenz.materialdrawer.widget.MaterialDrawerSliderView
         android:id="@+id/slider"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:fitsSystemWindows="true" />
 

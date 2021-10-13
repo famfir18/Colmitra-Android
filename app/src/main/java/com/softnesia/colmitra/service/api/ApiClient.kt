@@ -65,8 +65,12 @@ interface ApiClient {
 
     @Headers("Accept: application/json")
     @GET("DataCollector")
-    fun getCollector(
-        @Query("pages") page: Int
+    fun getCollector(): Call<Collector>
+
+    @Headers("Accept: application/json")
+    @GET("DataCollector")
+    fun getCollectorSearch(
+        @Query("search") search: String
     ): Call<Collector>
 
     @Headers("Accept: application/json")

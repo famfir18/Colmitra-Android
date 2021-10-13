@@ -152,6 +152,11 @@ class CustomerDetailActivity : BaseActivity(),
         etCustomerCpPhone.setOnClickListener { dialPhone(customer.cpPhone) }
         etCustomerOfficePhone.setOnClickListener { dialPhone(customer.officePhone) }
 
+        etCustomerBCA.setText(customer.vabca.toString())
+        etCustomerMandiri.setText(customer.vaMandiri.toString())
+        etCustomerPermata.setText(customer.vaPermata.toString())
+        etCustomerDPD.setText(customer.dpd.toString())
+        etMitra.setText(customer.mitra)
         etCustomerUserId.setText(customer.userId)
         etCustomerName.setText(customer.name)
         etCustomerPhone.setText(customer.phone)
@@ -255,7 +260,7 @@ class CustomerDetailActivity : BaseActivity(),
         setProgressIndicator(true)
 
         val map = hashMapOf(
-            "id_collection" to Account.getInstance().id,
+            "id_login_collector" to Account.getInstance().id,
             "id_nasabah" to customer.id,
             "catatan" to etCustomerNote.text.toString(),
             "lat" to lat,
@@ -269,14 +274,14 @@ class CustomerDetailActivity : BaseActivity(),
             )
         } ?: ""
 
-        map["methode_pembayaran"] = etCustomerPaymentStatus.text?.let {
+        map["status_bayar"] = etCustomerPaymentStatus.text?.let {
             if (it.isNotEmpty()) {
                 val paymentStatus = spCustomerPaymentStatus.selectedItem as PaymentStatus
                 paymentStatus.id.toString()
             } else ""
         } ?: ""
 
-        map["status"] = etCustomerVisit.text?.let {
+        map["status_visit"] = etCustomerVisit.text?.let {
             if (it.isNotEmpty()) {
                 val visitStatus = spCustomerVisit.selectedItem as VisitStatus
                 visitStatus.id.toString()

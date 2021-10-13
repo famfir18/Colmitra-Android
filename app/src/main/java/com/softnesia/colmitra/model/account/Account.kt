@@ -21,7 +21,7 @@ class Account private constructor() {
     @SerializedName("foto")
     var avatar: String? = null
 
-    @SerializedName("id_collection")
+    @SerializedName("id_login_collector")
     val collectionId: Long = 0
 
     @SerializedName("api_token")

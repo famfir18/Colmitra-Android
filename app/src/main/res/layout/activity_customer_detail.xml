@@ -71,6 +71,22 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilMitra"
+                        style="@style/TextInputLayout.OutlinedBox.Rounded"
+                        android:layout_marginTop="@dimen/layout_small_margin">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etMitra"
+                            style="@style/EditTextStyle"
+                            android:enabled="false"
+                            android:hint="@string/mitra"
+                            android:inputType="textCapWords"
+                            android:maxLines="1"
+                            android:textSize="12sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/tilCustomerName"
                         style="@style/TextInputLayout.OutlinedBox.Rounded"
                         android:layout_marginTop="@dimen/layout_small_margin">
@@ -172,6 +188,71 @@
                             android:inputType="textCapWords|textMultiLine"
                             android:maxLines="4"
                             android:minLines="4"
+                            android:textSize="12sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCustomerDPD"
+                        style="@style/TextInputLayout.OutlinedBox.Rounded"
+                        android:layout_marginTop="@dimen/layout_general_margin">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCustomerDPD"
+                            style="@style/EditTextStyle"
+                            android:enabled="false"
+                            android:hint="@string/dpd"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:textSize="12sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCustomerBCA"
+                        style="@style/TextInputLayout.OutlinedBox.Rounded"
+                        android:layout_marginTop="@dimen/layout_general_margin">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCustomerBCA"
+                            style="@style/EditTextStyle"
+                            android:enabled="false"
+                            android:hint="VA BCA"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:textSize="12sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCustomerMandiri"
+                        style="@style/TextInputLayout.OutlinedBox.Rounded"
+                        android:layout_marginTop="@dimen/layout_general_margin">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCustomerMandiri"
+                            style="@style/EditTextStyle"
+                            android:enabled="false"
+                            android:hint="VA Mandiri"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:textSize="12sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCustomerPermata"
+                        style="@style/TextInputLayout.OutlinedBox.Rounded"
+                        android:layout_marginTop="@dimen/layout_general_margin">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCustomerPermata"
+                            style="@style/EditTextStyle"
+                            android:enabled="false"
+                            android:hint="VA Permata"
+                            android:inputType="text"
+                            android:maxLines="1"
                             android:textSize="12sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>

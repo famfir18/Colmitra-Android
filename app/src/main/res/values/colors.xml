@@ -12,4 +12,6 @@
     <color name="background">#f3f3f3</color>
     <color name="text_primary">#000000</color>
     <color name="text_tertiary">#979797</color>
+
+    <color name="white">#FFFFFF</color>
 </resources>
