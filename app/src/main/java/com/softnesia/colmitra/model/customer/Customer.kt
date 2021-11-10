@@ -41,9 +41,11 @@ data class Customer(
     @SerializedName("DPD")
     val dpd: Number?,
     @SerializedName("VA_BCA")
-    val vabca: Number?,
+    val vabca: String?,
     @SerializedName("VA_MANDIRI")
-    val vaMandiri: Number?,
+    val vaMandiri: String?,
     @SerializedName("VA_PERMATA")
-    val vaPermata: Number?
+    val vaPermata: String?,
+    @SerializedName("ID_MITRA")
+    val idMitra: Int?
 ) : Parcelable

@@ -7,6 +7,7 @@ import android.content.Intent
 import android.location.Location
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -18,6 +19,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.google.gson.Gson
 import com.softnesia.colmitra.IMAGE_FILE_PROVIDER
 import com.softnesia.colmitra.PHOTO_MAX_WIDTH
 import com.softnesia.colmitra.R
@@ -47,6 +49,8 @@ class CustomerDetailActivity : BaseActivity(),
 
     private var spinnerPaymentCalledOnce = false
     private var spinnerVisitCalledOnce = false
+
+    private var idMitra: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,33 +83,51 @@ class CustomerDetailActivity : BaseActivity(),
                     id: Long
                 ) {
                     if (spinnerPaymentCalledOnce) {
-                        val value = parent?.selectedItem as PaymentStatus
-                        etCustomerPaymentStatus.setText(value.name)
+                        val valuePayment = parent?.selectedItem as PaymentStatus
+                        etCustomerPaymentStatus.setText(valuePayment.name)
 
-                        tilCustomerPtpDate.visibility = if (value.id == STATUS_PTP_ID) View.VISIBLE
+                        tilCustomerPtpDate.visibility = if (valuePayment.id == STATUS_PTP_ID) View.VISIBLE
                         else View.GONE
                     }
                     spinnerPaymentCalledOnce = true
                 }
             }
 
-        spCustomerVisit.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                if (spinnerVisitCalledOnce) {
-                    val value = parent?.selectedItem.toString()
-                    etCustomerVisit.setText(value)
-                }
-                spinnerVisitCalledOnce = true
-            }
-        }
+//        spCustomerVisit.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onNothingSelected(parent: AdapterView<*>?) {
+//            }
+//
+//            override fun onItemSelected(
+//                parent: AdapterView<*>?,
+//                view: View?,
+//                position: Int,
+//                id: Long
+//            ) {
+//                if (spinnerVisitCalledOnce) {
+//
+//                    val valueVisit = parent?.selectedItem as VisitStatus
+//                    if (valueVisit.id == 1L) {
+//                        spCustomerPaymentStatus.visibility = View.VISIBLE
+//                        tilCustomerPaymentStatus.visibility = View.VISIBLE
+//
+//
+//
+//                    } else if (valueVisit.id == 2L) {
+//                        spCustomerPaymentStatus.visibility = View.VISIBLE
+//                        tilCustomerPaymentStatus.visibility = View.VISIBLE
+//                    }
+//                    /*spCustomerPaymentStatus.visibility = if (valueVisit.id == STATUS_VISIT_ID) View.VISIBLE
+//                    else if (valueVisit.id == 2L) View.VISIBLE
+//                    else View.GONE
+//                    tilCustomerPaymentStatus.visibility = if (valueVisit.id == STATUS_VISIT_ID) View.VISIBLE
+//                    else View.GONE*/
+//
+//                    val value = parent.selectedItem.toString()
+//                    etCustomerVisit.setText(value)
+//                }
+//                spinnerVisitCalledOnce = true
+//            }
+//        }
 
         etCustomerPtpDate.setOnClickListener {
             DialogComposer.displayDateDialog(
@@ -143,18 +165,22 @@ class CustomerDetailActivity : BaseActivity(),
         }
 
         presenter.getCustomerDetail(customer.id)
+
     }
 
     private fun bindData(response: CustomerResponse) {
         val customer = response.customer
 
+        idMitra = customer.idMitra
+        Log.i("TAG", "ID Mitra " + idMitra)
+
         etCustomerPhone.setOnClickListener { dialPhone(customer.phone) }
         etCustomerCpPhone.setOnClickListener { dialPhone(customer.cpPhone) }
         etCustomerOfficePhone.setOnClickListener { dialPhone(customer.officePhone) }
 
-        etCustomerBCA.setText(customer.vabca.toString())
-        etCustomerMandiri.setText(customer.vaMandiri.toString())
-        etCustomerPermata.setText(customer.vaPermata.toString())
+        etCustomerBCA.setText(customer.vabca)
+        etCustomerMandiri.setText(customer.vaMandiri)
+        etCustomerPermata.setText(customer.vaPermata)
         etCustomerDPD.setText(customer.dpd.toString())
         etMitra.setText(customer.mitra)
         etCustomerUserId.setText(customer.userId)
@@ -179,14 +205,88 @@ class CustomerDetailActivity : BaseActivity(),
             tvPhotoError.visibility = View.GONE
         }
 
-        val paymentAdapter = ArrayAdapter(
-            this,
-            android.R.layout.simple_spinner_dropdown_item,
-            response.paymentStatuses
-        )
-        spCustomerPaymentStatus.adapter = paymentAdapter
+        fun statusBayar() {
 
-        customer.paymentStatus?.also {
+            val bayarFull = response.paymentStatuses[0]
+            val bayarSebagian = response.paymentStatuses[1]
+
+            val payment = mutableListOf<PaymentStatus>()
+
+            payment.add(bayarFull)
+            payment.add(bayarSebagian)
+
+            val paymentAdapter = ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                payment
+            )
+            response.paymentStatuses[0]
+
+            val gson = Gson()
+            spCustomerPaymentStatus.adapter = paymentAdapter
+
+        }
+
+        fun statusPTP() {
+            val ptp = response.paymentStatuses[2]
+            val payment = mutableListOf<PaymentStatus>()
+            payment.add(ptp)
+
+            val paymentAdapter = ArrayAdapter(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                payment
+            )
+            response.paymentStatuses[0]
+
+            val gson = Gson()
+            spCustomerPaymentStatus.adapter = paymentAdapter
+
+        }
+
+        spCustomerVisit.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                if (spinnerVisitCalledOnce) {
+
+                    val valueVisit = parent?.selectedItem as VisitStatus
+                    if (valueVisit.id == 1L) {
+                        spCustomerPaymentStatus.visibility = View.VISIBLE
+                        tilCustomerPaymentStatus.visibility = View.VISIBLE
+                        tilCustomerAmcoll.visibility = View.VISIBLE
+                        tilCustomerPtpDate.visibility = View.GONE
+                        statusBayar()
+
+                    } else if (valueVisit.id == 3L) {
+                        spCustomerPaymentStatus.visibility = View.GONE
+                        tilCustomerPaymentStatus.visibility = View.GONE
+                        tilCustomerAmcoll.visibility = View.GONE
+                        tilCustomerPtpDate.visibility = View.GONE
+
+                    } else if (valueVisit.id == 2L) {
+                        spCustomerPaymentStatus.visibility = View.VISIBLE
+                        tilCustomerPaymentStatus.visibility = View.VISIBLE
+                        tilCustomerAmcoll.visibility = View.GONE
+                        statusPTP()
+                    }
+
+                    val value = parent.selectedItem.toString()
+                    etCustomerVisit.setText(value)
+                }
+                spinnerVisitCalledOnce = true
+            }
+        }
+
+
+
+        /*customer.paymentStatus?.also {
             response.paymentStatuses.forEachIndexed { index, status ->
                 if (status.id == it) {
                     etCustomerPaymentStatus.setText(status.name)
@@ -194,7 +294,7 @@ class CustomerDetailActivity : BaseActivity(),
                     return@forEachIndexed
                 }
             }
-        }
+        }*/
 
         val visitAdapter = ArrayAdapter(
             this,
@@ -262,6 +362,7 @@ class CustomerDetailActivity : BaseActivity(),
         val map = hashMapOf(
             "id_login_collector" to Account.getInstance().id,
             "id_nasabah" to customer.id,
+            "id_mitra" to idMitra.toString(),
             "catatan" to etCustomerNote.text.toString(),
             "lat" to lat,
             "lang" to lng

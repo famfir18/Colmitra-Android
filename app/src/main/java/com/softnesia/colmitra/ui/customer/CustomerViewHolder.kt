@@ -14,7 +14,7 @@ class CustomerViewHolder(val view: View, private val mListener: ItemClickListene
         view.tvCustomerUserId.text = data.userId
         view.tvCustomerName.text = data.name
         view.tvCustomerPhone.text = data.phone
-        if (data.company == null) {
+        if (data.company == null || data.company == "Pilih Company") {
             view.tvCompany.text = "-"
         } else {
             view.tvCompany.text = data.company

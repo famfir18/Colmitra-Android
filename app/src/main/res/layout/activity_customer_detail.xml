@@ -275,19 +275,54 @@
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <!--                    new order-->
+
                     <com.softnesia.colmitra.ui.widget.ReselectedSpinner
-                        android:id="@+id/spCustomerPaymentStatus"
+                        android:id="@+id/spCustomerVisit"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_gravity="center_horizontal"
                         android:background="@null"
                         android:spinnerMode="dropdown" />
 
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCustomerVisit"
+                        style="@style/TextInputLayout.OutlinedBox.Rounded"
+                        android:layout_marginTop="@dimen/layout_general_margin"
+                        app:endIconDrawable="@drawable/ic_expand_more_primary"
+                        app:endIconMode="custom"
+                        app:endIconTint="@color/colorPrimary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCustomerVisit"
+                            style="@style/EditTextStyle"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:hint="@string/customer_visit"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:textSize="12sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.softnesia.colmitra.ui.widget.ReselectedSpinner
+                        android:id="@+id/spCustomerPaymentStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@null"
+                        android:visibility="gone"
+                        android:spinnerMode="dropdown" />
+
+
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/tilCustomerPaymentStatus"
                         style="@style/TextInputLayout.OutlinedBox.Rounded"
                         android:layout_marginTop="@dimen/layout_general_margin"
                         app:endIconDrawable="@drawable/ic_expand_more_primary"
+                        android:visibility="gone"
                         app:endIconMode="custom"
                         app:endIconTint="@color/colorPrimary">
 
@@ -302,6 +337,25 @@
                             android:textSize="12sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilCustomerAmcoll"
+                        style="@style/TextInputLayout.OutlinedBox.Rounded"
+                        android:layout_marginTop="@dimen/layout_general_margin"
+                        app:prefixText="Rp."
+                        android:visibility="gone"
+                        app:prefixTextAppearance="@style/TextAppearance12">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCustomerAmcoll"
+                            style="@style/EditTextStyle"
+                            android:hint="@string/customer_amcoll"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:textSize="12sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/tilCustomerPtpDate"
@@ -319,51 +373,6 @@
                             android:focusable="false"
                             android:focusableInTouchMode="false"
                             android:hint="@string/customer_ptp_date"
-                            android:maxLines="1"
-                            android:textSize="12sp" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tilCustomerAmcoll"
-                        style="@style/TextInputLayout.OutlinedBox.Rounded"
-                        android:layout_marginTop="@dimen/layout_general_margin"
-                        app:prefixText="Rp."
-                        app:prefixTextAppearance="@style/TextAppearance12">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etCustomerAmcoll"
-                            style="@style/EditTextStyle"
-                            android:hint="@string/customer_amcoll"
-                            android:inputType="number"
-                            android:maxLines="1"
-                            android:textSize="12sp" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.softnesia.colmitra.ui.widget.ReselectedSpinner
-                        android:id="@+id/spCustomerVisit"
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@null"
-                        android:spinnerMode="dropdown" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tilCustomerVisit"
-                        style="@style/TextInputLayout.OutlinedBox.Rounded"
-                        android:layout_marginTop="@dimen/layout_general_margin"
-                        app:endIconDrawable="@drawable/ic_expand_more_primary"
-                        app:endIconMode="custom"
-                        app:endIconTint="@color/colorPrimary">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etCustomerVisit"
-                            style="@style/EditTextStyle"
-                            android:focusable="false"
-                            android:focusableInTouchMode="false"
-                            android:hint="@string/customer_visit"
-                            android:inputType="text"
                             android:maxLines="1"
                             android:textSize="12sp" />
 
