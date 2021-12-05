@@ -2,9 +2,10 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rootLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_bubble">
-
+    android:layout_height="match_parent">
+<!--
+    android:background="@drawable/bg_bubble"
+-->
     <include
         layout="@layout/appbar"
         android:layout_width="match_parent"
@@ -30,6 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/layout_general_margin"
             android:gravity="center_horizontal"
+            android:textSize="14sp"
+            android:fontFamily="@font/nunito"
             android:text="@string/app_welcome_text"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textColor="@color/colorPrimary"

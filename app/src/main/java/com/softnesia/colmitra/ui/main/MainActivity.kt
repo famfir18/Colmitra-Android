@@ -21,6 +21,9 @@ import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.github.javiersantos.appupdater.AppUpdater
+import com.github.javiersantos.appupdater.enums.Display
+import com.github.javiersantos.appupdater.enums.UpdateFrom
 import com.jrtracking.surveyor.ui.ListBaseActivity
 import com.mikepenz.materialdrawer.holder.StringHolder
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
@@ -84,7 +87,27 @@ class MainActivity : ListBaseActivity(), MainContract.MainView, ItemClickListene
         }
 
         bindUserData(Account.getInstance())
+        autoUpdate()
         loadData()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        autoUpdate()
+    }
+
+    private fun autoUpdate() {
+        val appUpdater = AppUpdater(this)
+            .setUpdateFrom(UpdateFrom.JSON)
+            .setUpdateJSON("https://raw.githubusercontent.com/famfir18/UpdaterJson/master/update.json")
+            .setButtonDoNotShowAgain("")
+            .setButtonDismiss("")
+            .setCancelable(true)
+            .setIcon(R.drawable.logo)
+            .showAppUpdated(false)
+            .setCancelable(false)
+            .setDisplay(Display.DIALOG)
+            .start()
     }
 
     private fun initDrawer() {
@@ -101,7 +124,7 @@ class MainActivity : ListBaseActivity(), MainContract.MainView, ItemClickListene
             override fun set(imageView: ImageView, uri: Uri, placeholder: Drawable, tag: String?) {
                 Glide.with(imageView.context)
                     .load(uri)
-                    .placeholder(placeholder)
+                    .placeholder(R.drawable.ic_profile)
                     .centerCrop()
                     .into(imageView)
             }
@@ -131,10 +154,10 @@ class MainActivity : ListBaseActivity(), MainContract.MainView, ItemClickListene
         }
 
         val colorStateList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.red))
-        val bg = ContextCompat.getDrawable(this, R.drawable.bg_bubble)
+//        val bg = ContextCompat.getDrawable(this, R.drawable.bg_bubble)
         val drawerWidth = ViewUtil.getScreenWidth(this) * 70 / 100
         slider.apply {
-            background = bg
+//            background = bg
             customWidth = drawerWidth
 
             addItems(

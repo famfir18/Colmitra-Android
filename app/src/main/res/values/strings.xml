@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">Colmitra</string>
-    <string name="app_onboarding_text">Selamat Datang di Collection</string>
-    <string name="app_welcome_text">Selamat Datang di Layanan Collection</string>
+    <string name="app_onboarding_text">Selamat Datang di Sistem Layanan Collection</string>
+    <string name="app_welcome_text">Selamat Datang di Sistem Layanan Collection</string>
 
     <string name="all_cancel">Batal</string>
     <string name="all_note">Catatan</string>
     <string name="all_handphone">Handphone</string>
     <string name="all_home">Home</string>
     <string name="all_home_address">Alamat Rumah</string>
-    <string name="all_office_address">Alamat Kantor</string>
+    <string name="all_office_address">Alamat KTP</string>
     <string name="all_upload_photo">Upload Foto</string>
     <string name="all_update">Update</string>
     <string name="all_sign_in">Sign In</string>
