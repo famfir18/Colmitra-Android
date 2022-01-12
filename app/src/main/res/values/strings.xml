@@ -36,11 +36,11 @@
     <string name="borrower_list">Daftar Borrower</string>
 
     <string name="customer_amcoll">Amcoll</string>
-    <string name="customer_id">Id Borrower</string>
+    <string name="customer_id">ID Borrower</string>
     <string name="customer_name">Nama Borrower</string>
     <string name="customer_bill">Jumlah Tunggakan</string>
     <string name="customer_cp_phone">Handphone CP</string>
-    <string name="customer_office_phone">Telepon Kantor</string>
+    <string name="customer_office_name">Nama Kantor</string>
     <string name="customer_payment_status">Status Pembayaran</string>
     <string name="customer_payment_status_error">Silakan pilih status pembayaran</string>
     <string name="customer_ptp_date">Tanggal PTP</string>
@@ -53,5 +53,9 @@
 
     <string name="latitudeBabel">Latitude</string>
     <string name="longitudeBabel">Longitude</string>
+    <string name="dob">Tanggal Lahir</string>
+    <string name="va_mandiri">VA Mandiri</string>
+    <string name="va_bca">VA BCA</string>
+    <string name="va_permata">VA Permata</string>
 
 </resources>

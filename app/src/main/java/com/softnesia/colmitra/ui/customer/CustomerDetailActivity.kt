@@ -2,6 +2,8 @@ package com.softnesia.colmitra.ui.customer
 
 import android.app.Activity
 import android.app.DatePickerDialog
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.location.Location
@@ -12,6 +14,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.Toast
 import com.asksira.bsimagepicker.BSImagePicker
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
@@ -175,8 +178,8 @@ class CustomerDetailActivity : BaseActivity(),
         Log.i("TAG", "ID Mitra " + idMitra)
 
         etCustomerPhone.setOnClickListener { dialPhone(customer.phone) }
-        etCustomerCpPhone.setOnClickListener { dialPhone(customer.cpPhone) }
-        etCustomerOfficePhone.setOnClickListener { dialPhone(customer.officePhone) }
+//        etCustomerCpPhone.setOnClickListener { dialPhone(customer.cpPhone) }
+//        etCustomerOfficePhone.setOnClickListener { dialPhone(customer.officePhone) }
 
         etCustomerBCA.setText(customer.vabca)
         etCustomerMandiri.setText(customer.vaMandiri)
@@ -191,6 +194,39 @@ class CustomerDetailActivity : BaseActivity(),
         etCustomerAddress.setText(customer.address)
         etCustomerOfficeAddress.setText(customer.officeAddress)
         etCustomerBill.setText(LNumber.thousandDotSeparator(customer.billNominal))
+
+        etCustomerBCA.setOnClickListener {
+            val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val vaBCA = etCustomerBCA.text
+            val clipData = ClipData.newPlainText("text", vaBCA)
+            clipboardManager.setPrimaryClip(clipData)
+            Toast.makeText(this, "VA BCA berhasil disalin", Toast.LENGTH_SHORT).show()
+        }
+
+        etCustomerMandiri.setOnClickListener {
+            val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val vaMandiri = etCustomerMandiri.text
+            val clipData = ClipData.newPlainText("text", vaMandiri)
+            clipboardManager.setPrimaryClip(clipData)
+            Toast.makeText(this, "VA Mandiri berhasil disalin", Toast.LENGTH_SHORT).show()
+        }
+
+        etCustomerPermata.setOnClickListener {
+            val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val vaPermata = etCustomerPermata.text
+            val clipData = ClipData.newPlainText("text", vaPermata)
+            clipboardManager.setPrimaryClip(clipData)
+            Toast.makeText(this, "VA Permata berhasil disalin", Toast.LENGTH_SHORT).show()
+        }
+
+        etCustomerUserId.setOnClickListener {
+            val clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val userID = etCustomerUserId.text
+            val clipData = ClipData.newPlainText("text", userID)
+            clipboardManager.setPrimaryClip(clipData)
+            Toast.makeText(this, "ID Borrower berhasil disalin", Toast.LENGTH_SHORT).show()
+        }
+
         if (customer.amcoll > 0) etCustomerAmcoll.setText(LNumber.thousandDotSeparator(customer.amcoll))
         etCustomerNote.setText(customer.note)
         customer.photoUrl?.also {

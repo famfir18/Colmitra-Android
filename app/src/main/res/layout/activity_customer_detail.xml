@@ -64,9 +64,11 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etCustomerUserId"
                             style="@style/EditTextStyle"
-                            android:enabled="false"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
                             android:hint="@string/customer_id"
                             android:inputType="textCapWords"
+                            android:textColor="@color/colorPrimary"
                             android:maxLines="1"
                             android:textSize="12sp" />
 
@@ -131,11 +133,11 @@
                             android:id="@+id/etCustomerCpPhone"
                             style="@style/EditTextStyle"
                             android:focusable="false"
+                            android:enabled="false"
                             android:focusableInTouchMode="false"
-                            android:hint="@string/customer_cp_phone"
+                            android:hint="@string/dob"
                             android:inputType="phone"
                             android:maxLines="1"
-                            android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -148,12 +150,12 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etCustomerOfficePhone"
                             style="@style/EditTextStyle"
+                            android:enabled="false"
                             android:focusable="false"
                             android:focusableInTouchMode="false"
-                            android:hint="@string/customer_office_phone"
+                            android:hint="@string/customer_office_name"
                             android:inputType="phone"
                             android:maxLines="1"
-                            android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -218,10 +220,12 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etCustomerBCA"
                             style="@style/EditTextStyle"
-                            android:enabled="false"
-                            android:hint="VA BCA"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:hint="@string/va_bca"
                             android:inputType="text"
                             android:maxLines="1"
+                            android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -234,10 +238,12 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etCustomerMandiri"
                             style="@style/EditTextStyle"
-                            android:enabled="false"
-                            android:hint="VA Mandiri"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:hint="@string/va_mandiri"
                             android:inputType="text"
                             android:maxLines="1"
+                            android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -251,10 +257,12 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etCustomerPermata"
                             style="@style/EditTextStyle"
-                            android:enabled="false"
-                            android:hint="VA Permata"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
+                            android:hint="@string/va_permata"
                             android:inputType="text"
                             android:maxLines="1"
+                            android:textColor="@color/colorPrimary"
                             android:textSize="12sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
