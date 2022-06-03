@@ -14,5 +14,8 @@ data class Collector(
     @SerializedName("foto")
     val avatar: String? = null,
     @SerializedName("data")
-    val customers: List<Customer> = listOf()
+    val customers: List<Customer> = listOf(),
+    val leader: String,
+    val borrowers: Int,
+    val amcoll: Int
 ) : Parcelable

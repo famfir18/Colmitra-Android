@@ -11,8 +11,8 @@ android {
         applicationId "com.softnesia.colmitra"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 4
-        versionName "2.2"
+        versionCode 5
+        versionName "2.3"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -58,6 +58,7 @@ dependencies {
     implementation('com.github.bumptech.glide:okhttp3-integration:4.6.1') {
         exclude group: 'glide-parent'
     }
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
     // Bottom Sheet Dialog
     implementation 'com.afollestad.material-dialogs:bottomsheets:3.3.0'

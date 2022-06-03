@@ -8,16 +8,13 @@ import android.content.res.Configuration
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
-import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.ContextCompat
-import androidx.core.view.contains
-import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -41,8 +38,8 @@ import com.softnesia.colmitra.R
 import com.softnesia.colmitra.RC_UPDATE_CUSTOMER
 import com.softnesia.colmitra.config.Settings
 import com.softnesia.colmitra.model.Collector
-import com.softnesia.colmitra.model.customer.Customer
 import com.softnesia.colmitra.model.account.Account
+import com.softnesia.colmitra.model.customer.Customer
 import com.softnesia.colmitra.ui.ItemClickListener
 import com.softnesia.colmitra.ui.auth.login.LoginActivity
 import com.softnesia.colmitra.ui.customer.CustomerAdapter
@@ -51,11 +48,12 @@ import com.softnesia.colmitra.ui.widget.message.DialogComposer
 import com.softnesia.colmitra.ui.widget.message.ToastComposer
 import com.softnesia.colmitra.util.ViewUtil
 import com.softnesia.colmitra.util.network.Connectivity
+import kotlinx.android.synthetic.main.activity_customer_detail.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.rootLayout
 import kotlinx.android.synthetic.main.material_drawer_header.view.*
 import kotlinx.android.synthetic.main.toolbar.*
 import java.util.*
-import java.util.Locale.filter
 
 class MainActivity : ListBaseActivity(), MainContract.MainView, ItemClickListener {
     private lateinit var presenter: MainPresenter
@@ -236,6 +234,22 @@ class MainActivity : ListBaseActivity(), MainContract.MainView, ItemClickListene
 
         emptyViewHolder?.hide()
 
+        val initialName : String = data.name
+        tv_id.text = initialName
+        tv_tl.text = data.leader
+        println("Data leader " + data.leader)
+        tv_updated.text = data.borrowers.toString()
+        ("Rp " + data.amcoll.toString()).also { tv_collected.text = it }
+
+        var initials = ""
+        for (s in initialName.split(" ")) {
+            initials += s[0]
+        }
+        if (initials.length > 3) {
+            initials = initials.substring(0,3)
+        }
+        tv_initial.text = initials
+
         search_view.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String): Boolean {
                 search_view.clearFocus()
@@ -245,6 +259,18 @@ class MainActivity : ListBaseActivity(), MainContract.MainView, ItemClickListene
 //                itemList.clear()
                 rvList.adapter = adapter
                 itemList.addAll(data.customers)
+
+                val initialName : String = data.name
+                tv_id.text = initialName
+                tv_tl.text = data.leader
+                tv_updated.text = data.borrowers.toString()
+                ("Rp " + data.amcoll.toString()).also { tv_collected.text = it }
+
+                var initials = ""
+                for (s in initialName.split(" ")) {
+                    initials += s[0]
+                }
+                tv_initial.text = initials
 
                 return true
             }
@@ -258,6 +284,76 @@ class MainActivity : ListBaseActivity(), MainContract.MainView, ItemClickListene
 
         })
 
+
+//        val uri = "https://avatars.dicebear.com/api/initials/"
+//        val initialName : String = data.name
+//        val initials = initialName.replace(" ","-")
+//        val loadedImage = "$uri$initials.svg"
+//
+//        Log.d("Tag", "Bisa ga $loadedImage")
+//
+//        Picasso
+//            .get()
+//            .load(loadedImage)
+//            .into(iv_profiles)
+//
+//        tv_id.text = initialName
+
+    }
+
+    override fun onSearchCustomer(data: Collector) {
+        if (isFinishing) return
+
+        if (pageToLoad == 1) bindUserData(Account.getInstance())
+
+        if (data.customers.isEmpty()) {
+            showEmpty(getString(R.string.customers_empty))
+            return
+        }
+
+//        if (adapter == null) {
+        itemList = data.customers.toMutableList()
+        adapter = CustomerAdapter(itemList, this).apply {
+            setHasStableIds(true)
+        }
+        rvList.adapter = adapter
+
+        search_view.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String): Boolean {
+                search_view.clearFocus()
+                Log.i("Tag", "lalala")
+                itemList = data.customers.toMutableList()
+                presenter.searchCollector(query)
+//                itemList.clear()
+                rvList.adapter = adapter
+                itemList.addAll(data.customers)
+
+                val initialName : String = data.name
+                tv_id.text = initialName
+                tv_tl.text = data.leader
+                tv_updated.text = data.borrowers.toString()
+                ("Rp " + data.amcoll.toString()).also { tv_collected.text = it }
+
+                var initials = ""
+                for (s in initialName.split(" ")) {
+                    initials += s[0]
+                }
+                if (initials.length > 3) {
+                    initials = initials.substring(0,3)
+                }
+                tv_initial.text = initials
+
+                return true
+            }
+
+            override fun onQueryTextChange(query: String): Boolean {
+                if (query == "") {
+                    loadData()
+                }
+                return true
+            }
+
+        })
     }
 
     override fun onItemClicked(v: View, data: Any?, position: Int) {

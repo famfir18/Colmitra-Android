@@ -33,7 +33,7 @@ class MainPresenter(val view: MainContract.MainView) : BasePresenter(), MainCont
         val call = CollectorSearch.detail(search, object : ResponseCallback<Collector> {
             override fun onSuccess(data: Collector) {
                 view.setProgressIndicator(false)
-                view.onCollectorLoaded(data)
+                view.onSearchCustomer(data)
             }
 
             override fun onFailed(message: String?) {

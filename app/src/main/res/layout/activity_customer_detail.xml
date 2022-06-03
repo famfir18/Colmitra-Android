@@ -172,7 +172,7 @@
                             android:gravity="top|start"
                             android:hint="@string/all_home_address"
                             android:inputType="textCapWords|textMultiLine"
-                            android:maxLines="4"
+                            android:maxLines="10"
                             android:minLines="4"
                             android:textSize="12sp" />
 

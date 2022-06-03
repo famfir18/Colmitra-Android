@@ -9,6 +9,7 @@ import com.softnesia.colmitra.ui.BaseContract
 class MainContract {
     interface MainView : BaseContract.RemoteListView {
         fun onCollectorLoaded(data: Collector)
+        fun onSearchCustomer(data: Collector)
     }
 
     interface MainAction {

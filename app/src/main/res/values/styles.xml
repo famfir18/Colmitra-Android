@@ -14,8 +14,13 @@
 
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
 
-        <item name="materialDrawerStyle">@style/Widget.MaterialDrawerStyle</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
         <item name="materialDrawerHeaderStyle">@style/Widget.MaterialDrawerHeaderStyle</item>
+    </style>
+
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@color/darkGreen</item>
     </style>
 
     <style name="WindowAnimationTransition">

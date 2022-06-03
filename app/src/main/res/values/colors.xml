@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#31b448</color>
+    <color name="colorSecondary">#89F646</color>
+    <color name="darkGreen">#1D9F34</color>
     <color name="colorPrimaryDark">@android:color/transparent</color>
     <color name="colorAccent">#feb734</color>
 
@@ -12,6 +14,7 @@
     <color name="background">#f3f3f3</color>
     <color name="text_primary">#000000</color>
     <color name="text_tertiary">#979797</color>
+    <color name="transparent">#00000000</color>
 
     <color name="white">#FFFFFF</color>
 </resources>
